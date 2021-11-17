@@ -11,8 +11,8 @@ $ cd tph-yolov5
 $ pip install -r requirements.txt
 ```
 # Convert labels
-VisDrone2YOLO_lable.py transfer Visdrone annotiations to yolo labels.  
-You should set the path of VisDrone dataset in .py file first.
+VisDrone2YOLO_lable.py transfer VisDrone annotiations to yolo labels.  
+You should set the path of VisDrone dataset in VisDrone2YOLO_lable.py first.
 ```bash
 $ python VisDrone2YOLO_lable.py
 ```
