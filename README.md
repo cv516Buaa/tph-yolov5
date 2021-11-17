@@ -6,7 +6,7 @@ You can get [VisDrone-DET2021: The Vision Meets Drone Object Detection Challenge
 
 # Install
 ```bash
-$ git clone https://github.com/Adlith/tph-yolov5
+$ git clone https://github.com/cv516Buaa/tph-yolov5
 $ cd tph-yolov5
 $ pip install -r requirements.txt
 ```
