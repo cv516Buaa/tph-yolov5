@@ -19,7 +19,8 @@ $ python VisDrone2YOLO_lable.py
 
 # Inference
 * `Datasets` : [VisDrone](http://aiskyeye.com/download/object-detection-2/)
-* `Weights` : 
+* `Weights` (PyTorch
+v1.10): 
     * `yolov5l-xs-1.pt`:  | [Baidu Drive(pw: vibe)](https://pan.baidu.com/s/1APETgMoeCOvZi1GsBZERrg). |  [Google Drive](https://drive.google.com/file/d/1w-utUKt_FMfpW8vJUddTQvh-qC4pw4m9/view?usp=sharing) |
     * `yolov5l-xs-2.pt`:  | [Baidu Drive(pw: vffz)](https://pan.baidu.com/s/19S84EevP86yJIvnv9KYXDA). |  [Google Drive](https://drive.google.com/file/d/1tZ0rM4uj1HGsZtqaE2gryb25ADmjiMYu/view?usp=sharing) |
     
@@ -47,7 +48,7 @@ $ python train.py --img 1536 --batch 2 --epochs 80 --data ./data/VisDrone.yaml -
 ```
 ![image](train.png)  
 
-# Description of TPH-yolov5 and citation
+# Description of TPH-YOLOv5 and citation
 - https://arxiv.org/abs/2108.11539
 - https://openaccess.thecvf.com/content/ICCV2021W/VisDrone/html/Zhu_TPH-YOLOv5_Improved_YOLOv5_Based_on_Transformer_Prediction_Head_for_Object_ICCVW_2021_paper.html  
 
