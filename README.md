@@ -67,4 +67,5 @@ If you find this code useful please cite:
 # References
 Thanks to their great works
 * [ultralytics/yolov5](https://github.com/ultralytics/yolov5)
+* [SwinTransformer](https://github.com/microsoft/Swin-Transformer)
 * [WBF](https://github.com/ZFTurbo/Weighted-Boxes-Fusion)
