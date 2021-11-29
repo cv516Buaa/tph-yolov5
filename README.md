@@ -44,7 +44,6 @@ $ python wbf.py
 # Train
 train.py allows you to train new model from strach.
 ```bash
-$ python train.py --img 1536 --batch 2 --epochs 80 --data ./data/VisDrone.yaml --weights yolov5l.pt --hy data/hyps/hyp.VisDrone.yaml --cfg models/yolov5l-xs-tr-cbam-spp-bifpn.yaml --name v5l-xs
 $ python train.py --img 1536 --batch 4 --epochs 80 --data ./data/VisDrone.yaml --weights yolov5l.pt --hy data/hyps/hyp.VisDrone.yaml --cfg models/yolov5l-xs-tph.yaml --name v5l-xs-tph
 ```
 ![image](train.png)  
