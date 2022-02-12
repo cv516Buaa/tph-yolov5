@@ -55,12 +55,13 @@ $ python train.py --img 1536 --adam --batch 4 --epochs 80 --data ./data/VisDrone
 If you have any question, please discuss with me by sending email to adlith@buaa.edu.cn  
 If you find this code useful please cite:
 ```
-@inproceedings{zhu2021tph,
-  title={TPH-YOLOv5: Improved YOLOv5 Based on Transformer Prediction Head for Object Detection on Drone-captured Scenarios},
-  author={Zhu, Xingkui and Lyu, Shuchang and Wang, Xu and Zhao, Qi},
-  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
-  pages={2778--2788},
-  year={2021}
+@InProceedings{Zhu_2021_ICCV,
+    author    = {Zhu, Xingkui and Lyu, Shuchang and Wang, Xu and Zhao, Qi},
+    title     = {TPH-YOLOv5: Improved YOLOv5 Based on Transformer Prediction Head for Object Detection on Drone-Captured Scenarios},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV) Workshops},
+    month     = {October},
+    year      = {2021},
+    pages     = {2778-2788}
 }
 ```
 
