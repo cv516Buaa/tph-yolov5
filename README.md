@@ -21,8 +21,8 @@ $ python VisDrone2YOLO_lable.py
 * `Datasets` : [VisDrone](http://aiskyeye.com/download/object-detection-2/)
 * `Weights` (PyTorch
 v1.10): 
-    * `yolov5l-xs-1.pt`:  | [Baidu Drive(pw: vibe)](https://pan.baidu.com/s/1APETgMoeCOvZi1GsBZERrg). |  [Google Drive](https://drive.google.com/file/d/1w-utUKt_FMfpW8vJUddTQvh-qC4pw4m9/view?usp=sharing) |
-    * `yolov5l-xs-2.pt`:  | [Baidu Drive(pw: vffz)](https://pan.baidu.com/s/19S84EevP86yJIvnv9KYXDA). |  [Google Drive](https://drive.google.com/file/d/1tZ0rM4uj1HGsZtqaE2gryb25ADmjiMYu/view?usp=sharing) |
+    * `yolov5l-xs-1.pt`:  | [Baidu Drive(pw: vibe)](https://pan.baidu.com/s/1APETgMoeCOvZi1GsBZERrg). |  [Google Drive](https://drive.google.com/file/d/1nGeKl3qOa26v3haGSDmLjeA0cjDD9p61/view?usp=sharing) |
+    * `yolov5l-xs-2.pt`:  | [Baidu Drive(pw: vffz)](https://pan.baidu.com/s/19S84EevP86yJIvnv9KYXDA). |  [Google Drive](https://drive.google.com/file/d/1VmORvxNtvMVMvmY7cCwvp0BoL6L3RGiq/view?usp=sharing) |
     
 val.py runs inference on VisDrone2019-DET-val, using weights trained with TPH-YOLOv5.  
 (We provide two weights trained by two different models based on YOLOv5l.)
