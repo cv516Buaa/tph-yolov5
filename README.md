@@ -52,7 +52,7 @@ $ python train.py --img 1536 --adam --batch 4 --epochs 80 --data ./data/VisDrone
 - https://arxiv.org/abs/2108.11539
 - https://openaccess.thecvf.com/content/ICCV2021W/VisDrone/html/Zhu_TPH-YOLOv5_Improved_YOLOv5_Based_on_Transformer_Prediction_Head_for_Object_ICCVW_2021_paper.html  
 
-If you have any question, please discuss with me by sending email to adlith@buaa.edu.cn  
+If you have any question, please discuss with me by sending email to lyushuchang@buaa.edu.cn or liubinghao@buaa.edu.cn  
 If you find this code useful please cite:
 ```
 @InProceedings{Zhu_2021_ICCV,
