@@ -2,8 +2,7 @@
 This repo is the implementation of ["TPH-YOLOv5: Improved YOLOv5 Based on Transformer Prediction Head for Object Detection on Drone-Captured Scenarios"](https://openaccess.thecvf.com/content/ICCV2021W/VisDrone/html/Zhu_TPH-YOLOv5_Improved_YOLOv5_Based_on_Transformer_Prediction_Head_for_Object_ICCVW_2021_paper.html) and ["TPH-YOLOv5++: Boosting Object Detection on Drone-Captured Scenarios with Cross-Layer Asymmetric Transformer"](https://www.mdpi.com/2072-4292/15/6/1687).   
 On [VisDrone Challenge 2021](http://aiskyeye.com/), TPH-YOLOv5 wins 4th place and achieves well-matched results with 1st place model.
 ![image](result.png)  
-The TPH-YOLOv5++, as an improved version, achieves comparable results on VisDrone2021 and better results on UAVDT compared to TPH-YOLOv5.
-You can get [VisDrone-DET2021: The Vision Meets Drone Object Detection Challenge Results](https://openaccess.thecvf.com/content/ICCV2021W/VisDrone/html/Cao_VisDrone-DET2021_The_Vision_Meets_Drone_Object_Detection_Challenge_Results_ICCVW_2021_paper.html) for more information.
+You can get [VisDrone-DET2021: The Vision Meets Drone Object Detection Challenge Results](https://openaccess.thecvf.com/content/ICCV2021W/VisDrone/html/Cao_VisDrone-DET2021_The_Vision_Meets_Drone_Object_Detection_Challenge_Results_ICCVW_2021_paper.html) for more information. The TPH-YOLOv5++, as an improved version, significantly improves inference efficiency and reduces computational costs while maintaining detection performance compared to TPH-YOLOv5.
 
 # Install
 ```bash
@@ -19,7 +18,7 @@ $ python VisDrone2YOLO_lable.py
 ```
 
 # Inference
-* `Datasets` : [VisDrone](http://aiskyeye.com/download/object-detection-2/)
+* `Datasets` : [VisDrone](http://aiskyeye.com/download/object-detection-2/), [UAVDT](https://sites.google.com/view/grli-uavdt/%E9%A6%96%E9%A1%B5)
 * `Weights` (PyTorch
 v1.10): 
     * `yolov5l-xs-1.pt`:  | [Baidu Drive(pw: vibe)](https://pan.baidu.com/s/1APETgMoeCOvZi1GsBZERrg). |  [Google Drive](https://drive.google.com/file/d/1nGeKl3qOa26v3haGSDmLjeA0cjDD9p61/view?usp=sharing) |
@@ -33,7 +32,9 @@ $ python val.py --weights ./weights/yolov5l-xs-1.pt --img 1996 --data ./data/Vis
                                     yolov5l-xs-2.pt
 --augment --save-txt  --save-conf --task val --batch-size 8 --verbose --name v5l-xs
 ```
-![image](detect.png)
+![image](./images/result_in_VisDrone.png)
+Inference on UAVDT is similar and results of TPH-YOLOv5++ on UAVDT are as follow:
+![image](./images/result_in_UAVDT.png)
 
 # Ensemble
 If you inference dataset with different models, then you can ensemble the result by weighted boxes fusion using wbf.py.  
@@ -51,7 +52,9 @@ $ python train.py --img 1536 --adam --batch 4 --epochs 80 --data ./data/VisDrone
 
 # Description of TPH-YOLOv5 and citation
 - https://arxiv.org/abs/2108.11539
-- https://openaccess.thecvf.com/content/ICCV2021W/VisDrone/html/Zhu_TPH-YOLOv5_Improved_YOLOv5_Based_on_Transformer_Prediction_Head_for_Object_ICCVW_2021_paper.html  
+- https://openaccess.thecvf.com/content/ICCV2021W/VisDrone/html/Zhu_TPH-YOLOv5_Improved_YOLOv5_Based_on_Transformer_Prediction_Head_for_Object_ICCVW_2021_paper.html 
+# Description of TPH-YOLOv5++ and citation
+- https://www.mdpi.com/2072-4292/15/6/1687
 
 If you have any question, please discuss with me by sending email to lyushuchang@buaa.edu.cn or liubinghao@buaa.edu.cn  
 If you find this code useful please cite:
@@ -63,6 +66,19 @@ If you find this code useful please cite:
     month     = {October},
     year      = {2021},
     pages     = {2778-2788}
+}
+
+@Article{rs15061687,
+AUTHOR = {Zhao, Qi and Liu, Binghao and Lyu, Shuchang and Wang, Chunlei and Zhang, Hong},
+TITLE = {TPH-YOLOv5++: Boosting Object Detection on Drone-Captured Scenarios with Cross-Layer Asymmetric Transformer},
+JOURNAL = {Remote Sensing},
+VOLUME = {15},
+YEAR = {2023},
+NUMBER = {6},
+ARTICLE-NUMBER = {1687},
+URL = {https://www.mdpi.com/2072-4292/15/6/1687},
+ISSN = {2072-4292},
+DOI = {10.3390/rs15061687}
 }
 ```
 
