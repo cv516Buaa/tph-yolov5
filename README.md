@@ -51,7 +51,7 @@ $ python train.py --img 1536 --adam --batch 4 --epochs 80 --data ./data/VisDrone
 ```
 ![image](train.png)  
 
-# Description of TPH-YOLOv5, TPH-YOLOv5++ and citation
+# Description of TPH-YOLOv5, TPH-YOLOv5++ and citations
 - https://arxiv.org/abs/2108.11539
 - https://openaccess.thecvf.com/content/ICCV2021W/VisDrone/html/Zhu_TPH-YOLOv5_Improved_YOLOv5_Based_on_Transformer_Prediction_Head_for_Object_ICCVW_2021_paper.html 
 - https://www.mdpi.com/2072-4292/15/6/1687
