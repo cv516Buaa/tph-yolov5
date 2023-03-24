@@ -69,16 +69,16 @@ If you find this code useful please cite:
 }
 
 @Article{rs15061687,
-AUTHOR = {Zhao, Qi and Liu, Binghao and Lyu, Shuchang and Wang, Chunlei and Zhang, Hong},
-TITLE = {TPH-YOLOv5++: Boosting Object Detection on Drone-Captured Scenarios with Cross-Layer Asymmetric Transformer},
-JOURNAL = {Remote Sensing},
-VOLUME = {15},
-YEAR = {2023},
-NUMBER = {6},
-ARTICLE-NUMBER = {1687},
-URL = {https://www.mdpi.com/2072-4292/15/6/1687},
-ISSN = {2072-4292},
-DOI = {10.3390/rs15061687}
+   AUTHOR = {Zhao, Qi and Liu, Binghao and Lyu, Shuchang and Wang, Chunlei and Zhang, Hong},
+   TITLE = {TPH-YOLOv5++: Boosting Object Detection on Drone-Captured Scenarios with Cross-Layer Asymmetric Transformer},
+   JOURNAL = {Remote Sensing},
+   VOLUME = {15},
+   YEAR = {2023},
+   NUMBER = {6},
+   ARTICLE-NUMBER = {1687},
+   URL = {https://www.mdpi.com/2072-4292/15/6/1687},
+   ISSN = {2072-4292},
+   DOI = {10.3390/rs15061687}
 }
 ```
 
