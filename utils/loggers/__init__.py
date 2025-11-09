@@ -40,9 +40,9 @@ class Loggers():
         self.hyp = hyp
         self.logger = logger  # for printing results to console
         self.include = include
-        self.keys = ['train/box_loss', 'train/obj_loss', 'train/cls_loss',  # train loss
+        self.keys = ['train/box_loss', 'train/obj_loss', 'train/cls_loss', 'train/ciou_loss', 'train/ciou',  # train loss
                      'metrics/precision', 'metrics/recall', 'metrics/mAP_0.5', 'metrics/mAP_0.5:0.95',  # metrics
-                     'val/box_loss', 'val/obj_loss', 'val/cls_loss',  # val loss
+                     'val/box_loss', 'val/obj_loss', 'val/cls_loss', 'val/ciou_loss', 'val/ciou',  # val loss
                      'x/lr0', 'x/lr1', 'x/lr2']  # params
         for k in LOGGERS:
             setattr(self, k, None)  # init empty logger dictionary
@@ -64,7 +64,7 @@ class Loggers():
         # W&B
         if wandb and 'wandb' in self.include:
             wandb_artifact_resume = isinstance(self.opt.resume, str) and self.opt.resume.startswith('wandb-artifact://')
-            run_id = torch.load(self.weights).get('wandb_id') if self.opt.resume and not wandb_artifact_resume else None
+            run_id = torch.load(self.weights, weights_only=False).get('wandb_id') if self.opt.resume and not wandb_artifact_resume else None
             self.opt.hyp = self.hyp  # add hyperparameters
             self.wandb = WandbLogger(self.opt, run_id)
         else:

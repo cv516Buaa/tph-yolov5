@@ -14,6 +14,20 @@ from utils.general import check_version, colorstr, resample_segments, segment2bo
 from utils.metrics import bbox_ioa
 
 
+CUSTOM_RUNTIME_AUGMENTER = None
+
+
+def set_custom_runtime_augmenter(augmenter):
+    """
+    Register a RuntimeAugmenter-compatible object for YOLO dataloaders.
+
+    The object must implement .apply(image, boxes, labels) -> (image, boxes, labels),
+    where `image` is a grayscale numpy array and boxes/labels follow YOLO (cx,cy,w,h) format.
+    """
+    global CUSTOM_RUNTIME_AUGMENTER
+    CUSTOM_RUNTIME_AUGMENTER = augmenter
+
+
 class Albumentations:
     # YOLOv5 Albumentations class (optional, only used if package is installed)
     def __init__(self):
@@ -39,7 +53,22 @@ class Albumentations:
             logging.info(colorstr('albumentations: ') + f'{e}')
 
     def __call__(self, im, labels, p=1.0):
-        if self.transform and random.random() < p:
+        if CUSTOM_RUNTIME_AUGMENTER is not None and random.random() < p:
+            gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+            if labels is None or len(labels) == 0:
+                boxes = []
+                class_labels = []
+            else:
+                boxes = [tuple(row[1:5].tolist()) for row in labels]
+                class_labels = [int(row[0]) for row in labels]
+            aug_image, aug_boxes, aug_labels = CUSTOM_RUNTIME_AUGMENTER.apply(gray, boxes, class_labels)
+            if aug_boxes:
+                im = cv2.cvtColor(aug_image.astype(np.uint8), cv2.COLOR_GRAY2BGR)
+                labels = np.array([[aug_labels[i], *aug_boxes[i]] for i in range(len(aug_boxes))], dtype=np.float32)
+            else:
+                im = cv2.cvtColor(gray.astype(np.uint8), cv2.COLOR_GRAY2BGR)
+                labels = labels if labels is not None else np.zeros((0, 5), dtype=np.float32)
+        elif self.transform and random.random() < p:
             new = self.transform(image=im, bboxes=labels[:, 1:], class_labels=labels[:, 0])  # transformed
             im, labels = new['image'], np.array([[c, *b] for c, b in zip(new['class_labels'], new['bboxes'])])
         return im, labels

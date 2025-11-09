@@ -27,6 +27,13 @@ matplotlib.rc('font', **{'size': 11})
 matplotlib.use('Agg')  # for writing to files only
 
 
+def _get_text_size(font, text):
+    if hasattr(font, "getbbox"):
+        bbox = font.getbbox(text)
+        return bbox[2] - bbox[0], bbox[3] - bbox[1]
+    return font.getsize(text)
+
+
 class Colors:
     # Ultralytics color palette https://ultralytics.com/
     def __init__(self):
@@ -83,7 +90,7 @@ class Annotator:
         if self.pil or not is_ascii(label):
             self.draw.rectangle(box, width=self.lw, outline=color)  # box
             if label:
-                w, h = self.font.getsize(label)  # text width, height
+                w, h = _get_text_size(self.font, label)  # text width, height
                 outside = box[1] - h >= 0  # label fits outside box
                 self.draw.rectangle([box[0],
                                      box[1] - h if outside else box[1],
@@ -109,7 +116,7 @@ class Annotator:
 
     def text(self, xy, text, txt_color=(255, 255, 255)):
         # Add text to image (PIL-only)
-        w, h = self.font.getsize(text)  # text width, height
+        w, h = _get_text_size(self.font, text)  # text width, height
         self.draw.text((xy[0], xy[1] - h + 1), text, fill=txt_color, font=self.font)
 
     def result(self):
@@ -397,25 +404,36 @@ def plot_evolve(evolve_csv='path/to/evolve.csv'):  # from utils.plots import *; 
 def plot_results(file='path/to/results.csv', dir=''):
     # Plot training results.csv. Usage: from utils.plots import *; plot_results('path/to/results.csv')
     save_dir = Path(file).parent if file else Path(dir)
-    fig, ax = plt.subplots(2, 5, figsize=(12, 6), tight_layout=True)
-    ax = ax.ravel()
+    metric_cols = [
+        'train/box_loss', 'train/obj_loss', 'train/cls_loss', 'train/ciou_loss', 'train/ciou',
+        'metrics/precision', 'metrics/recall', 'metrics/mAP_0.5', 'metrics/mAP_0.5:0.95',
+        'val/box_loss', 'val/obj_loss', 'val/cls_loss', 'val/ciou_loss', 'val/ciou',
+    ]
     files = list(save_dir.glob('results*.csv'))
     assert len(files), f'No results.csv files found in {save_dir.resolve()}, nothing to plot.'
+    rows = math.ceil(len(metric_cols) / 5)
+    fig, ax = plt.subplots(rows, 5, figsize=(12, 4 * rows), tight_layout=True)
+    ax = ax.ravel()
     for fi, f in enumerate(files):
         try:
             data = pd.read_csv(f)
-            s = [x.strip() for x in data.columns]
+            columns = [c.strip() for c in data.columns]
             x = data.values[:, 0]
-            for i, j in enumerate([1, 2, 3, 4, 5, 8, 9, 10, 6, 7]):
-                y = data.values[:, j]
-                # y[y == 0] = np.nan  # don't show zero values
-                ax[i].plot(x, y, marker='.', label=f.stem, linewidth=2, markersize=8)
-                ax[i].set_title(s[j], fontsize=12)
-                # if j in [8, 9, 10]:  # share train and val loss y axes
-                #     ax[i].get_shared_y_axes().join(ax[i], ax[i - 5])
+            for idx, col in enumerate(metric_cols):
+                if idx >= len(ax):
+                    break
+                if col not in columns:
+                    ax[idx].set_visible(False)
+                    continue
+                y = data[col].values
+                ax[idx].plot(x, y, marker='.', label=f.stem, linewidth=2, markersize=8)
+                ax[idx].set_title(col, fontsize=11)
         except Exception as e:
             print(f'Warning: Plotting error for {f}: {e}')
-    ax[1].legend()
+    for idx in range(len(metric_cols), len(ax)):
+        ax[idx].set_visible(False)
+    if len(files):
+        ax[0].legend()
     fig.savefig(save_dir / 'results.png', dpi=200)
     plt.close()
 
